@@ -1,0 +1,75 @@
+body {
+    font-family:monospace;
+    text-align: center;
+}
+
+.mainFlex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.calcBox {
+width: 500px;
+height: 590px;
+display: flex;
+flex-wrap: wrap;
+background-color: darkgrey;
+border-radius: 10px;
+}
+
+.display {
+    width: 500px;
+    height: 140px;
+    background-color: black;
+    color: white;
+}
+
+#displayWindow {
+    margin: auto;
+    padding: 50px;
+    font-size: 70px;
+    text-align: end;
+}
+
+#buttons {
+    width: 500px;
+    height: 450px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buttonsDiv{
+    width: 125px;
+   height: 90px;
+}
+
+.buttons {
+   color: white;
+   border-radius: 20px;
+   margin: auto;
+   margin-top: 10px;
+   width: 105px;
+   height: 70px;
+   background-color: gray;
+   justify-content: space-around;
+   align-content: space-around;
+   border:2px solid rgb(75, 75, 75);
+   font-size: 25px;
+   font-weight: 400;
+}
+
+.buttons:hover {
+    background-color:rgb(30, 29, 29);
+}
+
+#divBtn0 {
+    width: 250px;
+    margin-left: auto;
+}
+#btn0 {
+    width: 230px;
+    margin-left: auto;
+}
