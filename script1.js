@@ -13,25 +13,29 @@ let displayWindow = document.querySelector('#displayWindow');
 
 function add(oldVal,newVal){
     result = oldVal + newVal;
+    oldVal = result;
     console.log(result);
  }
 
  function subtract(oldVal,newVal){
     result = oldVal - newVal;
+    oldVal = result;
     console.log(result);
 }
 
 function multiply(oldVal,newVal){
     result = oldVal * newVal;
+    oldVal = result;
     console.log(result);
 }
 
 function divide(oldVal,newVal){
     result = oldVal / newVal;
+    oldVal = result;
     console.log(result);
 }
 
-function calculate (oldVal,newVal) {
+function calculate (oldVal,newVal) { // tu cos nie gra bo po C dalej dodaje na '='
     if (funcChoiceToCalculate == '+'){
         add(oldVal,newVal);
     } else if ( funcChoiceToCalculate == '-') {
@@ -51,6 +55,11 @@ cleanBtn.addEventListener('click',()=> {
     display = '0'; 
     oldVal = '0';
     newVal = '0';
+    oldValOp = '0';
+    newValOp = '0';
+    result = undefined;
+    funcChoice == '';
+    funcChoiceToCalculate=='';
     updateDisplay(display);
 });
 
@@ -66,11 +75,14 @@ funcBtn.forEach(funcBtn => funcBtn.addEventListener('click', function (){
     if (funcChoice == '+') {
         newVal=display.substring(1,10);
         funcChoiceToCalculate = funcChoice;
-        oldVal = newVal;
+        if (result === undefined){
+             oldVal = newVal;
+             result = oldVal;
+        } else {
+            operate(result,newVal);
+        }
         display='0';
         newVal='0';
-        console.log(oldVal);
-        console.log(newVal);
     }
     else if (funcChoice == '-') {
         newVal=display.substring(1,10);
@@ -135,14 +147,24 @@ function newValue (numValue) {
 
 
 equalsBtn.addEventListener('click', () => {
-        oldVal = parseInt(oldVal);
-        newVal = parseInt(newVal);
-        calculate (oldVal,newVal);
-        console.log(oldVal);
-        console.log(newVal);
-        console.log(result);
-        display = result;
-        updateDisplay(result);
+        operate(oldVal,newVal);
 });
+
+function operate (oldValOp,newValOp) {
+    oldVal = parseInt(oldValOp);
+    newVal = parseInt(newValOp);
+    console.log(oldVal);
+    console.log(newVal);
+    console.log(funcChoiceToCalculate);
+    
+    calculate (oldVal,newVal);
+    console.log(funcChoiceToCalculate);
+    console.log(result);
+    oldVal = result.toString();
+    updateDisplay(result);
+    newVal = newVal.toString();
+    //result='0';    
+    result = result.toString();
+} 
 
 newValue('0');
